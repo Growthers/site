@@ -1,7 +1,5 @@
 import type { FC } from "react";
 
-const Header: FC = () => {
-  return <></>;
-};
+const Header: FC = () => <></>;
 
 export default Header;
