@@ -1,8 +1,8 @@
-import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+// eslint-disable-next-line @next/next/no-document-import-in-page
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-class Document extends NextDocument {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  render() {
+class MyDocument extends Document {
+  render(): JSX.Element {
     return (
       <Html lang="ja">
         <Head />
@@ -15,4 +15,4 @@ class Document extends NextDocument {
   }
 }
 
-export default Document;
+export default MyDocument;
