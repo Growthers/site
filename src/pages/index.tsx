@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-import Footer from "../components/templates/footer";
-import Header from "../components/templates/header";
+import Layout from "../components/templates/layout";
 
 const Home: NextPage = () => (
   <>
-    <Header />
-    <Footer />
+    <Layout PageTitle="共同開発鯖" PageDescription="共同開発鯖へようこそ！">
+      <h1>Hello World!</h1>
+    </Layout>
   </>
 );
 
