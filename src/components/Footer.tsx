@@ -1,8 +1,8 @@
 import type { FC } from "react";
 
 const Footer: FC = () => (
-  <div>
-    <p>Footer</p>
+  <div className="border-t-2 border-orange-400">
+    <p className="flex justify-center my-4">Copyright &copy; 2022 Growthers | 共同開発鯖</p>
   </div>
 );
 
