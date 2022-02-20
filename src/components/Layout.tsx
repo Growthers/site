@@ -66,7 +66,7 @@ const Layout: FC<Props> = ({ PageTitle, children, PageDescription = DefaultDescr
       <TwitterMetas PageTitle={PageTitle} PageDescription={PageDescription} PageImage={PageImage} />
     </Head>
     <main>
-      <div>
+      <div className="min-h-screen">
         <Header />
         {children}
       </div>
