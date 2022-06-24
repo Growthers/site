@@ -9,15 +9,17 @@ type Props = {
 
 const QA: FC<Props> = ({ question, answer, className = "" }) => {
   const pattern = /\[.*\]\(https?:\/\/[\w!?/+\-_~=;.,*&@#$%()'[\]]+\)/g;
-  const answerPlanes = answer.split(pattern);
+  const answerPlains = answer.split(pattern);
   const answerLinks = answer.match(pattern);
-  const answerList = [];
+  let answerList = [];
 
-  // テキストとリンクを交互に
-  for (let i = 0; i < (answerPlanes.length ?? 0) + (answerLinks?.length ?? 0); i += 1) {
-    if (i % 2 === 0 && answerPlanes !== null) answerList.push(answerPlanes[i / 2]);
-    else if (answerLinks !== null) answerList.push(answerLinks[Math.floor(i / 2)]);
-  }
+  if (answerLinks) {
+    // テキストとリンクを交互に配列に挿入
+    for (let i = 0; i < answerPlains.length + answerLinks.length; i++) {
+      if (i % 2 === 0) answerList.push(answerPlains[i / 2]);
+      else answerList.push(answerLinks[Math.floor(i / 2)]);
+    }
+  } else answerList = answerPlains;
 
   return (
     <div className={`drop-shadow-lg ${className}`}>
