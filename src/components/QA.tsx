@@ -8,18 +8,27 @@ type Props = {
 };
 
 const QA: FC<Props> = ({ question, answer, className = "" }) => {
+  // [TEXT](URL) の正規表現
   const pattern = /\[.*\]\(https?:\/\/[\w!?/+\-_~=;.,*&@#$%()'[\]]+\)/g;
+  // 正規表現で分割する
   const answerPlains = answer.split(pattern);
+  // 正規表現にマッチする部分を抽出する
   const answerLinks = answer.match(pattern);
+  // 最終的なデータ
   let answerList = [];
 
+  // リンクがあるとき
   if (answerLinks) {
-    // テキストとリンクを交互に配列に挿入
+    // テキストとリンクを交互に配列に挿入 (0スタート)
     for (let i = 0; i < answerPlains.length + answerLinks.length; i++) {
+      // 偶数番目のときはテキストを順番に
       if (i % 2 === 0) answerList.push(answerPlains[i / 2]);
+      // 奇数番目のときはリンクを順番に
       else answerList.push(answerLinks[Math.floor(i / 2)]);
     }
-  } else answerList = answerPlains;
+  }
+  // リンクが無いときはそのまま移す
+  else answerList = answerPlains;
 
   return (
     <div className={`drop-shadow-lg ${className}`}>
